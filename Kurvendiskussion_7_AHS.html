@@ -1,0 +1,167 @@
+<!doctype html><html lang="de-AT"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Kurvendiskussion · 7. Klasse AHS</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#eef4f1;color:#162e2b;font:17px/1.55 system-ui,sans-serif}main{max-width:1080px;margin:auto;padding:24px}header,section{padding:clamp(16px,4vw,34px);border-radius:22px;margin-bottom:20px;background:white}header{background:#123a34;color:#fff}h1{font-size:clamp(32px,6vw,60px);line-height:1.04;margin:.25em 0}h2,h3,p{margin-top:0}nav{display:flex;flex-wrap:wrap;gap:14px}a{color:inherit}button,select,input,textarea{font:inherit}button,select,input:not([type=range]):not([type=checkbox]),textarea{border:1px solid #849e95;border-radius:8px;padding:7px 10px;background:#fff;color:#162e2b;max-width:100%}button{cursor:pointer}button.primary{background:#16594b;color:white;border-color:#16594b}input[type=range]{width:min(360px,100%);accent-color:#16594b}textarea{display:block;width:100%;margin:.5em 0}canvas{width:100%;display:block;height:clamp(260px,45vw,390px);background:#f7faf8;border:1px solid #dbe7e2;border-radius:12px;touch-action:pan-y}.bar{display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px;margin:12px 0}.note,details{background:#f0f6f3;padding:12px;border-radius:8px;margin:10px 0}summary{cursor:pointer}article{border-top:1px solid #dbe7e2;padding:18px 0 8px}article p{margin:0 0 8px}.feedback{min-height:1.6em;font-weight:650}.ok{color:#12604b}.retry{color:#923d1c}.tag{font-size:.85em;color:#43635a}.nums{display:flex;flex-wrap:wrap;gap:10px}.nums input{width:8em;display:block}table{border-collapse:collapse;width:100%}td,th{text-align:left;padding:6px;border-bottom:1px solid #cadbd4}.table{overflow:auto}sup{line-height:0}
+</style><main>
+<header><div>Mathematik · 7. Klasse AHS</div><h1>Kurvendiskussion</h1><p>Untersuche Polynomfunktionen. Lies besondere Punkte am Graphen ab, berechne sie und begründe deine Ergebnisse mit den Ableitungen.</p><nav aria-label="Abschnitte"><a href="#labor">Graphenlabor</a><a href="#regeln">Merkhilfe</a><a href="#training">Übungen</a><a href="#test">Selbstcheck</a></nav></header>
+<section id="labor"><h2>Graphenlabor</h2><p>Verschiebe den Regler oder klicke auf den Graphen. Vergleiche am selben x-Wert die Funktionshöhe, die Tangentensteigung und die zweite Ableitung.</p>
+<div class="bar"><label>Polynom <select id="poly"></select></label><button id="play" type="button">Animation starten</button></div>
+<div class="bar"><label><input type="checkbox" id="show1" checked> <span style="color:#a54016">f′</span></label><label><input type="checkbox" id="show2" checked> <span style="color:#5140a3">f″</span></label><label><input type="checkbox" id="tangent" checked> Tangente an f</label><label><input type="checkbox" id="points"> Besondere Punkte markieren</label></div>
+<canvas id="graph" role="img" aria-label="Koordinatensystem mit Funktion f und ihren Ableitungen"></canvas>
+<div class="bar"><label for="cursor">x-Wert</label><input type="range" id="cursor" min="-3" max="3" value="0" step="0.01"><output id="values"></output></div>
+<p id="equations" class="note"></p><p id="marks" hidden></p>
+<details><summary>Beobachtungsauftrag</summary>Wähle f(x) = x³ − 3x. Fahre zu x = −1, 0 und 1. Welche Kurve hat jeweils eine Nullstelle? Wechsle dann zu x³ und x⁴ und vergleiche bei x = 0 das Verhalten von f′ und f″ links und rechts der Stelle.</details>
+</section>
+<section id="regeln"><h2>Merkhilfe</h2>
+<div class="table"><table><thead><tr><th>Gesucht</th><th>So prüfst du</th></tr></thead><tbody>
+<tr><td>Funktionswert</td><td>Setze x₀ in f ein. Der Graph enthält (x₀ | f(x₀)).</td></tr>
+<tr><td>Nullstelle</td><td>Löse f(x) = 0. Bei gerader Vielfachheit berührt der Graph die x-Achse, bei ungerader schneidet er sie.</td></tr>
+<tr><td>Extremstelle</td><td>Prüfe die Kandidaten aus f′(x) = 0. Vorzeichenwechsel von + nach − ergibt ein lokales Maximum, von − nach + ein lokales Minimum.</td></tr>
+<tr><td>Wendestelle</td><td>Prüfe bei f″(x) = 0, ob f″ das Vorzeichen wechselt. f‴(x₀) ≠ 0 ist dort ein hinreichendes Kriterium.</td></tr>
+<tr><td>Sattelstelle</td><td>Prüfe auf eine Wendestelle mit f′(x₀) = 0. Die Tangente ist waagrecht.</td></tr>
+</tbody></table></div>
+<p class="note"><strong>Grad und Anzahl.</strong> Ein Polynom vom Grad n ≥ 2 hat höchstens n verschiedene reelle Nullstellen, n − 1 lokale Extremstellen und n − 2 Wendestellen. Eine Sattelstelle zählt zu den Wendestellen. Jede Sattelstelle beansprucht mindestens zwei Nullstellen von f′, wenn man Vielfachheiten mitzählt. Damit gilt zusätzlich für n ≥ 1: Anzahl der Extremstellen + 2 · Anzahl der Sattelstellen ≤ n − 1. Lineare Polynome haben genau eine Nullstelle und keine Extrem- oder Wendestellen.</p>
+</section>
+<section id="training"><h2>Übungen</h2><p>Gib Zahlen mit Dezimalkomma oder Dezimalpunkt ein. Bei offenen Aufgaben vergleichst du deine Begründung mit der Musterlösung.</p></section>
+<section id="test"><h2>Selbstcheck</h2><p>Löse die Aufgaben zuerst selbst. Prüfe dann deine Eingaben und vergleiche bei der offenen Aufgabe deine Argumentation.</p><p id="score" aria-live="polite"></p></section>
+</main><script>
+const $ = id => document.getElementById(id);
+const fmt = x => new Intl.NumberFormat('de-AT',{maximumFractionDigits:3}).format(Math.abs(x)<0.0005?0:x);
+const models = [
+ {name:'x³ − 3x', d:'3x² − 3', dd:'6x', c:[0,-3,0,1], y:8, p:[[-Math.sqrt(3),'N'],[0,'N/W'],[Math.sqrt(3),'N'],[-1,'H'],[1,'T']]},
+ {name:'x³', d:'3x²', dd:'6x', c:[0,0,0,1], y:8, p:[[0,'N/S']]},
+ {name:'x⁴', d:'4x³', dd:'12x²', c:[0,0,0,0,1], y:8, p:[[0,'N/T']]},
+ {name:'x⁴ − 2x²', d:'4x³ − 4x', dd:'12x² − 4', c:[0,0,-2,0,1], y:8, p:[[-Math.SQRT2,'N'],[Math.SQRT2,'N'],[0,'N/H'],[-1,'T'],[1,'T'],[-1/Math.sqrt(3),'W'],[1/Math.sqrt(3),'W']]},
+ {name:'x² + 1', d:'2x', dd:'2', c:[1,0,1], y:8, p:[[0,'T']]},
+ {name:'x⁵ + 1', d:'5x⁴', dd:'20x³', c:[1,0,0,0,0,1], y:8, p:[[-1,'N'],[0,'S']]}
+];
+const diff = c => c.slice(1).map((a,i) => a*(i+1));
+const at = (c,x) => c.reduceRight((v,a)=>v*x+a,0);
+models.forEach((m,i)=>$('poly').add(new Option('f(x) = '+m.name,i)));
+const canvas=$('graph'), ctx=canvas.getContext('2d');
+let geometry, animation=null;
+function draw(){
+ const m=models[$('poly').value], c=m.c, d=diff(c), dd=diff(d), x=Number($('cursor').value);
+ const w=canvas.clientWidth,h=canvas.clientHeight,dpr=window.devicePixelRatio||1;
+ canvas.width=w*dpr;canvas.height=h*dpr;ctx.scale(dpr,dpr);
+ const pad=30, X=t=>pad+(t+3)*(w-2*pad)/6, Y=v=>h/2-v*(h-2*pad)/(2*m.y);
+ geometry={pad,w};
+ const line=(x1,y1,x2,y2,color,thickness=1)=>{
+   ctx.beginPath();ctx.strokeStyle=color;ctx.lineWidth=thickness;ctx.moveTo(x1,y1);ctx.lineTo(x2,y2);ctx.stroke();
+ };
+ ctx.font='12px system-ui';ctx.fillStyle='#39564e';ctx.textAlign='center';
+ for(let i=-3;i<=3;i++){line(X(i),pad,X(i),h-pad,i===0?'#637d74':'#dce8e3');ctx.fillText(i,X(i),h-10);}
+ ctx.textAlign='right';
+ for(let i=-8;i<=8;i+=2){line(pad,Y(i),w-pad,Y(i),i===0?'#637d74':'#dce8e3');if(i)ctx.fillText(i,pad-5,Y(i)+4);}
+ ctx.fillText('x',w-7,Y(0)+4);ctx.fillText('y',X(0)-5,19);
+ ctx.save();ctx.beginPath();ctx.rect(pad,pad,w-2*pad,h-2*pad);ctx.clip();
+ line(X(x),pad,X(x),h-pad,'#647970');
+ const curves=[[c,'#006458',true],[d,'#a54016',$('show1').checked],[dd,'#5140a3',$('show2').checked]];
+ for(const [coef,color,show] of curves){
+   if(!show)continue;
+   ctx.beginPath();ctx.lineWidth=2.6;ctx.strokeStyle=color;
+   for(let i=0;i<=400;i++){const t=-3+6*i/400; if(i===0)ctx.moveTo(X(t),Y(at(coef,t)));else ctx.lineTo(X(t),Y(at(coef,t)));}
+   ctx.stroke();
+   ctx.beginPath();ctx.arc(X(x),Y(at(coef,x)),4.5,0,2*Math.PI);ctx.fillStyle=color;ctx.fill();
+ }
+ const fx=at(c,x), slope=at(d,x);
+ if($('tangent').checked){ctx.setLineDash([5,4]);line(X(x-0.8),Y(fx-0.8*slope),X(x+0.8),Y(fx+0.8*slope),'#006458',1.5);ctx.setLineDash([]);}
+ if($('points').checked){for(const [t,label] of m.p){
+   ctx.beginPath();ctx.arc(X(t),Y(at(c,t)),5,0,2*Math.PI);ctx.strokeStyle='#183d35';ctx.lineWidth=2;ctx.stroke();
+ }}
+ ctx.restore();
+ $('values').textContent='x = '+fmt(x)+'  |  f(x) = '+fmt(fx)+'  |  f′(x) = '+fmt(slope)+'  |  f″(x) = '+fmt(at(dd,x));
+ $('equations').textContent='f(x) = '+m.name+'   ·   f′(x) = '+m.d+'   ·   f″(x) = '+m.dd;
+ $('marks').hidden=!$('points').checked;
+ $('marks').textContent='N: Nullstelle · H: Hochpunkt · T: Tiefpunkt · W: Wendepunkt · S: Sattelpunkt. '+m.p.map(([t,label])=>label+' ('+fmt(t)+' | '+fmt(at(c,t))+')').join(' · ');
+}
+function stop(){if(animation!==null)cancelAnimationFrame(animation);animation=null;$('play').textContent='Animation starten';}
+$('play').onclick=()=>{
+ if(animation!==null){stop();return;}
+ $('play').textContent='Pause';
+ const initial=Number($('cursor').value), start=performance.now();
+ function frame(now){const x= (initial>=3?-3:initial)+(now-start)/3000;$('cursor').value=Math.min(x,3);draw();if(x<3)animation=requestAnimationFrame(frame);else stop();}
+ animation=requestAnimationFrame(frame);
+};
+for(const id of ['poly','show1','show2','tangent','points','cursor'])$(id).addEventListener('input',()=>{stop();draw();});
+canvas.addEventListener('click',e=>{stop();$('cursor').value=Math.max(-3,Math.min(3,6*(e.clientX-canvas.getBoundingClientRect().left-geometry.pad)/(geometry.w-2*geometry.pad)-3));draw();});
+new ResizeObserver(draw).observe(canvas);
+</script>
+<script>
+const tasks=[
+ ['training','Darstellen und Modellbilden','Wertetabelle ergänzen','Für p(x) = x³ − 3x: Ergänze die Werte in der Reihenfolge f, f′, f″ bei x = −2. Zeichne den Punkt auf Papier und skizziere seine Tangente.', ['p(−2)','p′(−2)','p″(−2)'],[-2,9,-12],'Einsetzen in p, p′ = 3x² − 3 und p″ = 6x ergibt −2, 9 und −12. Zeichne (−2 | −2). Die Tangente steigt um 9 Einheiten pro x-Einheit.'],
+ ['training','Rechnen und Operieren','Nullstellen und Vielfachheit','Bestimme die drei verschiedenen Nullstellen von q(x) = x⁴ − 4x² in aufsteigender Reihenfolge. Welche ist doppelt?', ['Kleinste','Mittlere','Größte','Doppelte'],[-2,0,2,0],'q(x) = x²(x − 2)(x + 2). Bei x = 0 berührt der Graph die x-Achse.'],
+ ['training','Interpretieren','Ableitungsgraph lesen','Wähle im Labor x³ − 3x. Wie verhält sich f im Intervall (−1; 1)?',['f ist streng steigend.','f ist streng fallend.','f ist konstant.'],1,'Der orange Graph von f′ liegt in diesem Intervall unter der x-Achse. Also ist f dort streng fallend.'],
+ ['training','Rechnen und Operieren','Extrempunkte berechnen','Für f(x) = x³ − 3x: Bestimme die Koordinaten des Hoch- und des Tiefpunkts.', ['x Hochpunkt','y Hochpunkt','x Tiefpunkt','y Tiefpunkt'],[-1,2,1,-2],'f′ = 3(x − 1)(x + 1) wechselt bei −1 von + nach − und bei 1 von − nach +. Einsetzen in f liefert die Höhen 2 und −2.'],
+ ['training','Rechnen und Operieren','Wendepunkt und Steigung','Für r(x) = x³ − 6x² + 9x: Bestimme den Wendepunkt und die Tangentensteigung dort.', ['x Wendepunkt','y Wendepunkt','Steigung'],[2,2,-3],'r″(x) = 6x − 12 wechselt bei 2 von − nach +. r(2) = 2 und r′(2) = −3.'],
+ ['training','Argumentieren und Begründen','Zwei ähnlich aussehende Kandidaten','Vergleiche g(x) = x³ mit h(x) = x⁴ bei x = 0. Beide erfüllen dort f′(0) = f″(0) = 0. Begründe, welche Art von Punkt jeweils vorliegt.',null,null,'Bei g wechselt g″ = 6x das Vorzeichen und g′(0) = 0. Das ergibt einen Sattelpunkt. Bei h bleibt h″ = 12x² links und rechts positiv. h′ = 4x³ wechselt von − zu +. Das ergibt einen Tiefpunkt, ohne Krümmungswechsel.'],
+ ['training','Darstellen und Modellbilden','Ein Polynom konstruieren','Konstruiere ein Polynom dritten Grades mit einer doppelten Nullstelle bei −1, einer einfachen Nullstelle bei 2 und f(0) = 4. Gib die Gleichung in Faktorform an und skizziere den Verlauf an den Nullstellen.',null,null,'Der Ansatz a(x + 1)²(x − 2) ergibt −2a = 4, also a = −2. Bei −1 berührt der Graph die x-Achse von oben. Bei 2 schneidet er die Achse von oben nach unten.'],
+ ['training','Interpretieren','Zuordnen','Für p(x) = x⁴ − 2x²: Wähle im Labor x = 0. Welche Aussage passt?',['x = 0 ist nur eine Nullstelle.','x = 0 ist Nullstelle und Wendestelle.','x = 0 ist Nullstelle und lokale Maximumstelle.','x = 0 ist eine Sattelstelle.'],2,'p(0) = 0 und p′(0) = 0. Wegen p″(0) = −4 ist dort ein Hochpunkt.'],
+ ['training','Argumentieren und Begründen','Grad und mögliche Anzahlen','Kann ein Polynom vierten Grades zwei verschiedene Sattelstellen haben?',['Ja, denn zwei Wendestellen sind möglich.','Nein, denn f′ müsste mindestens vier Nullstellen mit Vielfachheit besitzen.','Ja, wenn f vier verschiedene reelle Nullstellen hat.'],1,'An jeder Sattelstelle verschwinden f′ und f″. Jede ist damit eine mindestens doppelte Nullstelle von f′. Die Ableitung eines Polynoms vierten Grades hat Grad 3.'],
+ ['training','Argumentieren und Begründen','Gleicher Grad, andere Anzahlen','Vergleiche x⁴ und x⁴ − 2x². Zähle die verschiedenen reellen Nullstellen, Extremstellen und Wendestellen und begründe, warum der Grad allein die Anzahl nicht festlegt.',null,null,'x⁴ hat 1 Nullstelle, 1 Extremstelle und 0 Wendestellen. x⁴ − 2x² hat 3 Nullstellen (0 und ±√2), 3 Extremstellen (0 und ±1) und 2 Wendestellen (±1/√3). Die Ableitungsgleichungen haben je nach Koeffizienten verschieden viele reelle Lösungen mit Vorzeichenwechsel.'],
+ ['test','Rechnen und Operieren · Typ-1-orientiert','Funktionswert und Tangentensteigung','Gegeben ist f(x) = x⁴ − 2x². Berechne f(2) und f′(2).',['f(2)','f′(2)'],[8,24],'f(2) = 16 − 8 = 8. f′(x) = 4x³ − 4x, daher f′(2) = 32 − 8 = 24.'],
+ ['test','Interpretieren · Typ-1-orientiert','Aussagen auswählen','Welche beiden Aussagen gelten für eine Polynomfunktion an jeder Sattelstelle x₀?',['f(x₀) = 0','f′(x₀) = 0','f″ wechselt bei x₀ das Vorzeichen','f‴(x₀) ≠ 0'],{multiple:[1,2]},'Eine Sattelstelle ist eine Wendestelle mit waagrechter Tangente. Beispiel x⁵ + 1 bei x₀ = 0: f(0) = 1 und f‴(0) = 0.'],
+ ['test','Argumentieren und Begründen · Typ-1-orientiert','Obere Grenzen','Gib für ein Polynom sechsten Grades die jeweilige obere Grenze an. Zähle verschiedene reelle Stellen.',['Nullstellen','Extremstellen','Wendestellen'],[6,5,4],'Die Grade von f, f′ und f″ sind 6, 5 und 4. Jeder gesuchte Typ setzt eine Nullstelle des zugehörigen Polynoms voraus.'],
+ ['test','Darstellen und Modellbilden · Rechnen · Interpretieren · Begründen · Typ-2-orientiert','Eine ganze Kurvendiskussion','Untersuche f(x) = x³ − 3x². (a) Bestimme Nullstellen sowie Hoch-, Tief- und Wendepunkt. (b) Entscheide begründet, ob ein Sattelpunkt vorliegt. (c) Skizziere f mit den besonderen Punkten und gib die Monotonieintervalle an.',null,null,'(a) f = x²(x − 3) ergibt N₁(0 | 0) und N₂(3 | 0). f′ = 3x(x − 2) wechselt bei 0 von + nach − und bei 2 von − nach +. H(0 | 0), T(2 | −4). f″ = 6x − 6 wechselt bei 1 von − nach +, also W(1 | −2). (b) f′(1) = −3. Der einzige Wendepunkt hat eine fallende Tangente. (c) f steigt für x < 0 und x > 2, fällt für 0 < x < 2, berührt die x-Achse bei 0 und schneidet sie bei 3.']
+];
+const results=new Map();
+const count=tasks.filter(([section,,,,,answer])=>section==='test'&&answer!==null).length;
+function updateScore(){
+ $('score').textContent=[...results.values()].filter(Boolean).length+' von '+count+' automatisch prüfbaren Selbstcheck-Aufgaben richtig. Die Kurvendiskussion prüfst du mit der Musterlösung.';
+}
+function parseNumber(value){
+ const normalized=value.trim().replace(/−/g,'-').replace(',','.');
+ return /^[+-]?(?:\d+(?:\.\d*)?|\.\d+)$/.test(normalized)?Number(normalized):NaN;
+}
+tasks.forEach(([section,skill,title,question,labels,answer,solution],i)=>{
+ const article=document.createElement('article');
+ article.innerHTML='<p class="tag"></p><h3></h3><p class="question"></p>';
+ article.querySelector('.tag').textContent=skill;
+ article.querySelector('h3').textContent=title;
+ article.querySelector('.question').textContent=question;
+ const form=document.createElement('form'), inputs=[];
+ const numeric=Array.isArray(answer);
+ if(answer===null){
+  const label=document.createElement('label');
+  label.textContent='Deine Rechnung oder Begründung';
+  const area=document.createElement('textarea');area.rows=3;
+  label.append(area);form.append(label);
+ } else {
+  const fields=document.createElement('div');if(numeric)fields.className='nums';
+  labels.forEach((labelText,index)=>{
+   const label=document.createElement('label'), input=document.createElement('input');
+   inputs.push(input);
+   if(numeric){input.type='text';input.inputMode='decimal';label.append(labelText,input);}
+   else{input.type=answer.multiple?'checkbox':'radio';input.name='q'+i;label.append(input,' '+labelText);}
+   if(numeric)fields.append(label);
+   else{const row=document.createElement('div');row.append(label);fields.append(row);}
+  });
+  form.append(fields);
+ }
+ const feedback=document.createElement('p');feedback.className='feedback';feedback.setAttribute('role','status');
+ if(answer!==null){
+  const check=document.createElement('button');check.type='submit';check.className='primary';check.textContent='Antwort prüfen';
+  form.append(check,feedback);
+  form.addEventListener('submit',e=>{
+   e.preventDefault();
+   const selected=inputs.flatMap((input,j)=>input.checked?[j]:[]);
+   const expected=answer.multiple || [answer];
+   const valid=numeric?inputs.map(input=>parseNumber(input.value)):selected;
+   const correct=numeric?valid.every((n,j)=>Math.abs(n-answer[j])<0.00001):valid.length===expected.length&&expected.every(j=>valid.includes(j));
+   const missing=numeric?inputs.some(input=>!input.value.trim()):selected.length===0;
+   feedback.className='feedback '+(correct?'ok':'retry');
+   feedback.textContent=missing?'Ergänze deine Antwort.':correct?'Richtig.':numeric?'Prüfe diese Felder: '+labels.filter((_,j)=>!(Math.abs(valid[j]-answer[j])<0.00001)).join(', ')+'.':'Überprüfe deine Auswahl und versuche es erneut.';
+   if(section==='test'){results.set(i,correct);updateScore();}
+  });
+  form.addEventListener('input',()=>{
+   feedback.textContent='';
+   if(section==='test'){results.delete(i);updateScore();}
+  });
+ }
+ const detail=document.createElement('details'), summary=document.createElement('summary');
+ summary.textContent='Musterlösung anzeigen';
+ detail.append(summary,solution);
+ article.append(form,detail);
+ $(section).append(article);
+});
+updateScore();
+</script></html>
